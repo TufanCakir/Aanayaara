@@ -1,0 +1,33 @@
+{
+    "brand.tagline":
+        "A   J O U R N E Y   T H R O U G H   T H E   H E A V E N S",
+    "accessibility.openSettings": "Open Settings",
+    "chapter.eyebrow": "C H A P T E R  I",
+    "chapter.title": "The First Glimmer",
+    "chapter.continue": "Continue Journey",
+    "chapter.description":
+        "A quiet spark of light breaks through the darkness. Your journey among words, memories, and stars begins right here.",
+    "journey.title": "Your Journey",
+    "journey.motto": "W O R D S .  S T A R S .  Y O U .",
+    "journey.quote": "Some stories aren’t found.\nThey find you.",
+    "chronicle.title": "Celestial Chronicle",
+    "chronicle.cardSubtitle": "DISCOVER THE STORY",
+    "chronicle.eyebrow": "CELESTIAL CHRONICLE",
+    "chronicle.heading": "Stories of the Stars",
+    "chronicle.description":
+        "This is where you’ll find every chapter you unlock along your journey. Each star represents a memory, an encounter, or a new beginning.",
+    "journal.title": "Journal",
+    "journal.cardSubtitle": "YOUR THOUGHTS\nIN THE UNIVERSE",
+    "journal.eyebrow": "YOUR UNIVERSE",
+    "journal.description": "Capture what shines within you today.",
+    "journal.placeholder": "Write your thoughts …",
+    "journal.save": "Save Entry",
+    "tab.journey": "Journey",
+    "tab.chronicle": "Chronicle",
+    "tab.journal": "Journal",
+    "action.readMore": "Read More",
+    "settings.title": "Settings",
+    "settings.language": "Language",
+    "settings.languageHint":
+        "Choose the app language. Your selection is saved automatically."
+}

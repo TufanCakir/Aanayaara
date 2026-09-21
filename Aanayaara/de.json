@@ -1,0 +1,32 @@
+{
+    "brand.tagline": "E I N E   R E I S E   D U R C H   D E N   H I M M E L",
+    "accessibility.openSettings": "Einstellungen öffnen",
+    "chapter.eyebrow": "K A P I T E L  I",
+    "chapter.title": "Der erste Schimmer",
+    "chapter.continue": "Reise fortsetzen",
+    "chapter.description":
+        "Ein leiser Lichtfunke durchbricht die Dunkelheit. Deine Reise zwischen Worten, Erinnerungen und Sternen beginnt genau hier.",
+    "journey.title": "Deine Reise",
+    "journey.motto": "W O R T E .  S T E R N E .  D U .",
+    "journey.quote": "Manche Geschichten findet man nicht.\nSie finden dich.",
+    "chronicle.title": "Himmelschronik",
+    "chronicle.cardSubtitle": "ENTDECKE DIE GESCHICHTE",
+    "chronicle.eyebrow": "HIMMELSCHRONIK",
+    "chronicle.heading": "Geschichten der Sterne",
+    "chronicle.description":
+        "Hier findest du später alle freigeschalteten Kapitel deiner Reise. Jeder Stern steht für eine Erinnerung, eine Begegnung oder einen neuen Anfang.",
+    "journal.title": "Journal",
+    "journal.cardSubtitle": "DEINE GEDANKEN\nIM UNIVERSUM",
+    "journal.eyebrow": "DEIN UNIVERSUM",
+    "journal.description": "Halte fest, was heute in dir leuchtet.",
+    "journal.placeholder": "Schreibe deine Gedanken …",
+    "journal.save": "Eintrag speichern",
+    "tab.journey": "Reise",
+    "tab.chronicle": "Chronik",
+    "tab.journal": "Journal",
+    "action.readMore": "Weiterlesen",
+    "settings.title": "Einstellungen",
+    "settings.language": "Sprache",
+    "settings.languageHint":
+        "Wähle die Sprache der App. Deine Auswahl wird automatisch gespeichert."
+}
