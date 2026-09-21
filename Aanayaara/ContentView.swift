@@ -47,15 +47,11 @@ struct ContentView: View {
                     .padding(.bottom, 8)
             }
             .tint(Color.aanayaaraGold)
-            .environment(localization)
-            .environment(
-                \.locale,
-                Locale(identifier: localization.selectedLanguage.rawValue)
-            )
             .background {
                 CosmicBackground()
             }
         }
+        .environment(localization)
         .preferredColorScheme(.dark)
     }
 }
@@ -582,33 +578,151 @@ private struct ScreenHeader: View {
 }
 
 private struct SettingsScreen: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(LocalizationStore.self) private var localization
 
     var body: some View {
-        @Bindable var localization = localization
-
-        Form {
-            Section {
-                Picker(
-                    localization.text("settings.language"),
-                    selection: $localization.selectedLanguage
-                ) {
-                    ForEach(AppLanguage.allCases) { language in
-                        Text(language.displayName)
-                            .tag(language)
-                    }
-                }
-                .pickerStyle(.inline)
-            } header: {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
                 Text(localization.text("settings.language"))
-            } footer: {
+                    .font(.system(.title2, design: .serif, weight: .semibold))
+                    .foregroundStyle(Color.aanayaaraIvory)
+
+                LanguageGlassCard()
+
                 Text(localization.text("settings.languageHint"))
+                    .font(.footnote)
+                    .foregroundStyle(Color.aanayaaraLavender.opacity(0.82))
+                    .lineSpacing(3)
             }
+            .padding(.horizontal, 20)
+            .padding(.top, 24)
         }
-        .scrollContentBackground(.hidden)
+        .scrollIndicators(.hidden)
         .background { CosmicBackground() }
-        .navigationTitle(localization.text("settings.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            SettingsNavigationBar(
+                title: localization.text("settings.title"),
+                backLabel: localization.text("navigation.back"),
+                action: { dismiss() }
+            )
+        }
+        .toolbar(.hidden, for: .navigationBar)
+    }
+}
+
+private struct SettingsNavigationBar: View {
+    let title: String
+    let backLabel: String
+    let action: () -> Void
+
+    var body: some View {
+        HStack {
+            Button(action: action) {
+                Image(systemName: "chevron.left")
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(Color.aanayaaraIvory)
+                    .frame(width: 44, height: 44)
+                    .background(.ultraThinMaterial, in: Circle())
+                    .background(
+                        Color.aanayaaraIndigo.opacity(0.58),
+                        in: Circle()
+                    )
+                    .overlay(
+                        Circle().stroke(Color.aanayaaraLavender.opacity(0.32))
+                    )
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(backLabel)
+
+            Spacer()
+
+            Color.clear
+                .frame(width: 44, height: 44)
+                .accessibilityHidden(true)
+        }
+        .overlay {
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(Color.aanayaaraIvory)
+        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 6)
+    }
+}
+
+private struct LanguageGlassCard: View {
+    @Environment(LocalizationStore.self) private var localization
+
+    var body: some View {
+        VStack(spacing: 0) {
+            LanguageOptionButton(
+                title: AppLanguage.german.displayName,
+                isSelected: localization.selectedLanguage == .german,
+                action: { localization.selectedLanguage = .german }
+            )
+
+            Rectangle()
+                .fill(Color.aanayaaraLavender.opacity(0.2))
+                .frame(height: 1)
+                .padding(.horizontal, 18)
+
+            LanguageOptionButton(
+                title: AppLanguage.english.displayName,
+                isSelected: localization.selectedLanguage == .english,
+                action: { localization.selectedLanguage = .english }
+            )
+        }
+        .background(
+            .ultraThinMaterial,
+            in: RoundedRectangle(cornerRadius: 26, style: .continuous)
+        )
+        .background(
+            Color.aanayaaraIndigo.opacity(0.55),
+            in: RoundedRectangle(cornerRadius: 26, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 26, style: .continuous)
+                .stroke(Color.aanayaaraLavender.opacity(0.36), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.3), radius: 18, y: 9)
+    }
+}
+
+private struct LanguageOptionButton: View {
+    let title: String
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                Image(systemName: "globe.europe.africa")
+                    .font(.headline)
+                    .frame(width: 34, height: 34)
+                    .background(
+                        Color.aanayaaraLavender.opacity(0.12),
+                        in: Circle()
+                    )
+
+                Text(title)
+                    .font(.headline)
+
+                Spacer()
+
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title3)
+                    .opacity(isSelected ? 1 : 0)
+            }
+            .foregroundStyle(
+                isSelected ? Color.aanayaaraGold : Color.aanayaaraLavender
+            )
+            .padding(.horizontal, 18)
+            .frame(minHeight: 64)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 
